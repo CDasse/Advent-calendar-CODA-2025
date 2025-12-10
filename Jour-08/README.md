@@ -92,7 +92,7 @@ Résultat de la requète :
 ## Visualisation sur une carte
 
 Je convertis les coordoonées en format latitude/longitude.
-Puis j'injecte la tableau sous format csv dans UMap.
+Puis j'injecte le tableau sous format csv dans UMap.
 
 
 ![Carte du monde avec localisation des enfants](carte.png)
