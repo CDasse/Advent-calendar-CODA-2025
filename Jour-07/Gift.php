@@ -1,16 +1,12 @@
 <?php
 class GiftRegistry {
     public $gifts = [];
-    private $lastUpdated;
     public $debug = true;
 
     public function __construct($initial = null) {
         if ($initial != null) {
             $this->gifts = $initial;
-        } else {
-            echo "never";
         }
-        $this->lastUpdated = new DateTime();
     }
 
     public function addGift($child, $gift, $packed = null) {
@@ -18,12 +14,12 @@ class GiftRegistry {
             print "child missing\n";
         }
         foreach ($this->gifts as $g) {
-            if ($g['childName'] == $child && $g['giftName'] == $gift) {
-                return;
+            if ($g['childName'] == $child
+                && $g['giftName'] == $gift) {
+                    return;
             }
         }
         $this->gifts[] = ['childName'=>$child,'giftName'=>$gift,'isPacked'=>$packed,'notes'=>"ok"];
-        $this->lastUpdated = new DateTime();
     }
 
     public function markPacked($child) {
@@ -32,8 +28,7 @@ class GiftRegistry {
             $g = $this->gifts[$i];
             if ($g['childName'] == $child) {
                 $this->gifts[$i]['isPacked'] = true;
-                $found = true;
-                break;
+                $found = true; break;
             }
         }
         if ($found) { return true; }
@@ -44,7 +39,8 @@ class GiftRegistry {
         $result = null;
         foreach ($this->gifts as $g) {
             $childName = $g['childName'];
-            if ($childName == $child && $childName == func_get_arg(0) ) {
+            if ($child == $childName
+                && $g['childName'] == func_get_arg(0)) {
                     $result = $g;
             }
         }
